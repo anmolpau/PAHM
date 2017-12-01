@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <link rel = "stylesheet" href = "./css/pahm.css">
+    <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Bungee+Hairline|Libre+Barcode+128+Text|Roboto|Special+Elite">
+    <link rel = "stylesheet" href = "https://use.fontawesome.com/8791d82ebc.css">
+    <script type = "text/javascript" src = "./js/data.js"></script>
+    <script type = "text/javascript" src = "./js/drawmap.js"></script>
+    <script type = "text/javascript" src = "./js/events.js"></script>
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+    <script type = "text/javascript">
+      window.env = new function () {
+        this.year = 2017;
+        this.crime = 0;
+      };
+    </script>
+  </head>
+
+  <body>
+
+    <div id = "bg">
+
+      <header id = "header">MKE||PAHM</header>
+
+      <div class = "crimeview">
+        <div class = "crimeview-func">
+          <nav class = "crimenav">
+            <div class = "crimenav-head">
+              <p>Crime Category</p>
+            </div>
+            <div class = "crimenav-btn">
+              <button id = "btn1" onclick = "javascript:boundryBtnClicked()" autofocus>Boundry</button>
+              <button id = "btn2" onclick = "javascript:violentBtnClicked()">Violent</button>
+              <button id = "btn3" onclick = "javascript:propertyBtnClicked()">Property</button>
+              <button id = "btn4" onclick = "javascript:aggregateBtnClicked()">Aggregate</button>
+              <script type = "text/javascript">highlightBtn("btn1");</script>
+            </div>
+          </nav>
+          <div class = "crimeabout">
+            <div class = "crimeabout-head">
+              <p>About</p>
+            </div>
+            <div class = "crimeabout-body">
+              <p>
+                Selecting a category displays an aggregate representation of each topic group in the Wisconsin Incident Based Report (WIBR) for specific group A offenses.
+              </p>
+              <p>Violent Crimes</p>
+              <ul>
+                <li>Arson</li>
+                <li>Assault Offenses</li>
+                <li>Criminal Damage</li>
+                <li>Homicide</li>
+                <li>Sex Offense</li>
+              </ul>
+              <p>Property Crimes</p>
+              <ul>
+                <li>Burglary</li>
+                <li>Locked Vehicle</li>
+                <li>Robbery</li>
+                <li>Theft</li>
+                <li>Vehicle Theft</li>
+              </ul>
+            </div>
+          </div>
+          <div class = "crimelegend">
+            <div class = "crimelegend-head">
+              <p>Severity</p>
+            </div>
+            <div class = "crimelegend-dis1">
+              <div class = "s1"></div>
+              <div class = "s2"></div>
+              <div class = "s3"></div>
+              <div class = "s4"></div>
+              <div class = "s5"></div>
+              <div class = "s6"></div>
+              <div class = "s7"></div>
+            </div>
+            <div class = "crimelegend-dis2">
+              <div>
+                <i class = "fa fa-check"></i>
+                <i class = "fa fa-close"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class = "chart">
+        <div class = "chart-head">
+          <p>Recent Trends</p>
+        </div>
+        <div id = "chart_div"></div>
+        <div class = "chart-head">
+          <p>Chronology</p>
+        </div>
+        <div class = "slider">
+          <input type = "range" min = "1" max = "8" value = "5" class = "slider-func"
+          id = "initRng" name = "slider">
+        </div>
+        <div class = "slider-legend">
+          <div class = "y1">
+            <p>2013</p>
+          </div>
+          <div class = "y2">
+            <p>2014</p>
+          </div>
+          <div class = "y3">
+            <p>2015</p>
+          </div>
+          <div class = "y4">
+            <p>2016</p>
+          </div>
+          <div class = "y5">
+            <p>2017</p>
+          </div>
+          <div class = "y6">
+            <p>2018</p>
+          </div>
+          <div class = "y7">
+            <p>2019</p>
+          </div>
+          <div class = "y8">
+            <p>2020</p>
+          </div>
+        </div>
+        <div class = "chart-body">
+          <p>
+            Adjust the slider to view the state of offending throughout past years.
+            The value of each crime category will change according to the year
+            selected.  Trends analysis will also change and span a time prior to
+            the selected year.
+          </p>
+        </div>
+      </div>
+      <div class = "footer">
+        <div>
+          <i class = "fa fa-facebook-square fa-2x"></i>
+          <i class = "fa fa-twitter-square fa-2x"></i>
+          <i class = "fa fa-linkedin-square fa-2x"></i>
+        </div>
+        <div class = "footer-text">
+          <p>MKE||PAHM PROJECT 2017</p>
+        </div>
+      </div>
+
+      <div id = "map"></div>
+
+    </div>
+    <script type = "text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawStacked);
+    </script>
+    <script async defer
+    src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDi9lahq1J9q0bz9TqrWoi2byVNiz1FaZ8&callback=drawMap">
+    </script>
+
+  </body>
+  
+</html>
